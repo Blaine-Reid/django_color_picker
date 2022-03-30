@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Picker</title>
+  </head>
+  <style>
+    .input {
+      margin: 10px;
+      font-size: 1em;
+      font-weight: 800;
+    }
+
+    .dark {
+      color: black;
+    }
+
+    .light {
+      color: aliceblue;
+    }
+
+    .bg-color {
+      background-color: rgb({{red}}, {{green}}, {{blue}});
+    }
+  </style>
+
+  <body class="bg-color" ;>
+    <div>
+      <h2 class="{{ font }}">
+        Enter a number between 0 and 255 for each color below
+      </h2>
+      <form method="POST" action="{% url 'paint' %}">
+        {% csrf_token %}
+
+        <div class="input {{ font }}">
+          {{ form.red_amount.label }} {{ form.red_amount }}
+        </div>
+        <div class="input {{ font }}">
+          {{ form.green_amount.label }} {{ form.green_amount }}
+        </div>
+        <div class="input {{ font }}">
+          {{ form.blue_amount.label }} {{ form.blue_amount }}
+        </div>
+
+        <div>
+          <button type="submit">Paint</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
